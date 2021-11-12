@@ -1,5 +1,6 @@
 package nix.java.education.coffemachine;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,7 +18,7 @@ public class Main {
                 """);
 
 
-        //Stage2
+        //Stage 2
         System.out.println("Write how many cup of coffee you will need:");
         Scanner scanner = new Scanner(System.in);
         int cupsOfCoffee = scanner.nextInt();
@@ -28,6 +29,30 @@ public class Main {
         System.out.println(water * cupsOfCoffee + " " + "ml of water");
         System.out.println(milk * cupsOfCoffee + " " + "ml of milk");
         System.out.println(coffeeBeams * cupsOfCoffee + " " + "g of coffeeBeams");
+
+        //Stage 3
+
+        System.out.println("Write how many ml of water you will have:");
+        int amountOfWater = scanner.nextInt();
+        System.out.println("Write many how ml of milk you will have:");
+        int amountOfMilk = scanner.nextInt();
+        System.out.println("Write how many grams of CoffeeBeams you will have:");
+        int amountOfCoffeeBeams = scanner.nextInt();
+        int coffeeForWater = amountOfWater / water;
+        int coffeeForMilk = amountOfMilk / milk;
+        int coffeeForCoffeeBeams = amountOfCoffeeBeams / coffeeBeams;
+        int[] tab = {coffeeForWater, coffeeForMilk, coffeeForCoffeeBeams};
+        int min = Arrays.stream(tab).min().getAsInt();
+        System.out.println("Write how many cup of coffee you will need:");
+        int cupOfCoffee = scanner.nextInt();
+        int N = min - cupOfCoffee;
+        if (min == cupOfCoffee) {
+            System.out.println("Yes, i can make that amount of coffee");
+        } else if (min > cupOfCoffee) {
+            System.out.println("Yes, i can make that amount of coffee(and even" + " " + N + " " + "more than that)");
+        } else {
+            System.out.println("No,i make only" + " " + min + " " + "cups of coffee\n");
+        }
 
     }
 }
