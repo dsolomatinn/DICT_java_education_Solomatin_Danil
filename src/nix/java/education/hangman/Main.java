@@ -54,6 +54,7 @@ public class Main {
 //        }
 
         //STAGE 5
+
         ArrayList<String> someLetters = new ArrayList<>();
         StringBuffer word = new StringBuffer(randomWord);
         char[] symbol = randomWord.toCharArray();
@@ -67,32 +68,36 @@ public class Main {
 
         while (True) {
             if (life > 0) {
-                System.out.print(word + "\nВведите букву:");
-                String playerLetter = scanner.nextLine();
-                someLetters.add(playerLetter);
-                life--;
-                if (randomWord.contains(playerLetter)) {
-                    for (int i = 0; i < randomWord.length(); i++) {
-                        if (symbol[i] == playerLetter.charAt(0)) {
-                            word.setCharAt(i, playerLetter.charAt(0));
+                System.out.print("Try to guess the word: " + word + "\nEnter the letter:");
+                String playersLetter = scanner.nextLine();
+
+                if (randomWord.contains(playersLetter)) {
+                    if (someLetters.contains(playersLetter)) {
+                        System.out.println("No improvements");
+                    } else {
+                        for (int i = 0; i < randomWord.length(); i++) {
+                            if (symbol[i] == playersLetter.charAt(0)) {
+                                word.setCharAt(i, playersLetter.charAt(0));
+                            }
                         }
                     }
                     if (word.toString().equals(randomWord)) {
-                        System.out.println("The word is : " + randomWord + """
-                                Congratulate!
-                                We'll see how well you did in the next stage
-                                Thanks for playing!
-                                """);
+                        System.out.println("This word is: " + randomWord+ "\nCongratulate");
                         break;
                     }
                 } else {
-                    System.out.println("That letter doesn't appear in the word! ");
+                    System.out.println("This letter doesn't appear in the word!");
+                    life--;
                 }
+                someLetters.add(playersLetter);
             } else {
-                System.out.println("You Lost!");
+                System.out.println("You lost!");
                 break;
             }
-
         }
+
+        //Stage 6
+
+
     }
 }
