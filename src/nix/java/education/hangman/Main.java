@@ -28,7 +28,21 @@ public class Main {
         Random random = new Random();
         String[] words = {"java","python", "javascript", "kotlin"};
         String randomWord = words[random.nextInt(words.length)];
-        System.out.print("Try to guess the word: ");
+        /*System.out.print("Try to guess the word: ");*/
+    /*    if (answerUser.equals(randomWord)){
+            System.out.println("You win");
+        }
+        else{
+            System.out.println("You lost!");
+        }*/
+
+        //STAGE 4
+        char[] symbol = randomWord.toCharArray();
+        for (int i = 2; i < symbol.length; i++) {
+            symbol[i] = '-';
+        }
+        String word = String.valueOf(symbol);
+        System.out.print("Try to guess the word " + word + " : ");
         String answerUser = scanner.nextLine();
         if (answerUser.equals(randomWord)){
             System.out.println("You win");
