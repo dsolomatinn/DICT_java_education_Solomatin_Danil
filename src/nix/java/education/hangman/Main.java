@@ -9,8 +9,21 @@ public class Main {
         System.out.println(
                 """
                 HANGMAN
-                The game will be available soon.
-                Please, wait... 
                 """);
+
+        //STAGE 2
+
+        System.out.print("Guess the word: ");
+        String answerUser = scan.nextLine();
+        String word = "java";
+        if (answerUser.equals(word)){
+            System.out.println("You win");
+        }
+        else{
+            System.out.println("You lost!");
+        }
+
+
     }
 }
+
