@@ -53,7 +53,7 @@ public class Main {
 //            System.out.println("You lost!");
 //        }
 
-        //STAGE 5
+        //STAGE 5 6
 
         ArrayList<String> someLetters = new ArrayList<>();
         StringBuffer word = new StringBuffer(randomWord);
@@ -70,10 +70,20 @@ public class Main {
             if (life > 0) {
                 System.out.print("Try to guess the word: " + word + "\nEnter the letter:");
                 String playersLetter = scanner.nextLine();
+                if(someLetters.contains(playersLetter)){
+                    System.out.println("You've already guessed this letter.");
+                }
+                    if (playersLetter.length()>1){
+                        System.out.println("you should input a single letter");
+                        continue;}
+                    if(!playersLetter.matches("[a-z]")) {
+                        System.out.println("Please enter a lowercase English letter");
+                        continue;
+                    }
+
 
                 if (randomWord.contains(playersLetter)) {
                     if (someLetters.contains(playersLetter)) {
-                        System.out.println("No improvements");
                     } else {
                         for (int i = 0; i < randomWord.length(); i++) {
                             if (symbol[i] == playersLetter.charAt(0)) {
@@ -95,9 +105,5 @@ public class Main {
                 break;
             }
         }
-
-        //Stage 6
-
-
     }
 }
