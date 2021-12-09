@@ -8,6 +8,7 @@ public class Calculator {
     double numberOfMonth;
     double monthPayment;
     double i;
+    double diffPayment;
 
     public void countingRate(){
         System.out.println("Enter a loan interest:");
