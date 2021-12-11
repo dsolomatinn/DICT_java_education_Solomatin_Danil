@@ -1,4 +1,3 @@
-package nix.java.education.hangman;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -92,3 +91,4 @@ public class Hangman {
     }
 }
 }
+
