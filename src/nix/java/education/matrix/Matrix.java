@@ -8,10 +8,14 @@ public class Matrix {
             System.out.println("""
                     Chose your action
                     1. Sum of the matrix
+                    2. Multiply matrix by constant
                     """);
             String action = scanner.nextLine();
             if (action.equals("1")){
                 sumOfMatrix();
+            }
+            else if(action.equals("2")){
+              constantMatrix();
             }
             else {
                 break;
@@ -74,6 +78,35 @@ public class Matrix {
             System.out.println("ERROR");
         }
     }
+
+    public void constantMatrix(){
+        System.out.print("Enter parametric n(lines): ");
+        int n = scanner.nextInt();
+        System.out.print("Enter parametric m (rows): ");
+        int m = scanner.nextInt();
+        int [][] a = new  int [n][m];
+        System.out.println("Enter the matrix values in order: ");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a [i][j] = scanner.nextInt();
+            }
+        }
+        System.out.print("Enter a constant: ");
+        int constValue = scanner.nextInt();
+        System.out.println("New matrix: ");
+        int[][]c = new int[n][m];
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < m; j++) {
+
+                c[i][j] = a[i][j] * constValue;
+                System.out.print(c[i][j] + " ");
+
+            }
+            System.out.println();
+        }
+    }
+
 
 
 
