@@ -29,6 +29,9 @@ public class Matrix {
                 else  if (action.equals("4")){
                     menuTransport();
                 }
+                else  if (action.equals("5")){
+                    determinantOfMatrix();
+                }
                 else  if (action.equals("exit")){
                     break;
                 }
@@ -338,6 +341,61 @@ public class Matrix {
             }
             System.out.println();
         }
+    }
+
+
+    public void determinantOfMatrix(){
+        int[] sizeMatrix = new int[2];
+        System.out.print("Enter size of first matrix : ");
+        for (int i = 0; i < 2; i++) {
+            sizeMatrix[i] = scanner.nextInt();
+        }
+        double[][] myMatrix = new double[sizeMatrix[0]][sizeMatrix[1]];
+        System.out.println("Enter the values of first matrix : ");
+        for (int i = 0; i < sizeMatrix[0]; i++) {
+            for (int j = 0; j < sizeMatrix[1]; j++) {
+                myMatrix[i][j] = scanner.nextDouble();
+            }
+        }
+
+        System.out.println("First Matrix: ");
+        for (int i = 0; i < sizeMatrix[0]; i++) {
+            for (int j = 0; j < sizeMatrix[1]; j++) {
+                System.out.print(myMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        int determinant = 0;
+        if(sizeMatrix[0] ==2){
+             determinant = (int) (myMatrix[0][0] * myMatrix[1][1] - myMatrix[0][1] * myMatrix[1][0]);
+        }
+        else if(sizeMatrix[0]==3){
+            determinant = (int) (myMatrix[0][0]*myMatrix[1][1]*myMatrix[2][2]+myMatrix[0][1]*myMatrix[1][2]*myMatrix[2][0]+
+                    myMatrix[0][2]*myMatrix[1][0]*myMatrix[2][1]-myMatrix[0][2]*myMatrix[1][1]*myMatrix[2][0]-
+                    myMatrix[0][0]*myMatrix[1][2]*myMatrix[2][1]-myMatrix[0][1]*myMatrix[1][0]*myMatrix[2][2]);
+        }
+        else if (sizeMatrix[0]==4){
+            int firstMinor =(int) (myMatrix[1][0]*myMatrix[2][1]*myMatrix[3][2]+myMatrix[1][1]*myMatrix[2][2]*myMatrix[3][0]+
+                    myMatrix[1][2]*myMatrix[2][0]*myMatrix[3][1]-myMatrix[1][2]*myMatrix[2][1]*myMatrix[3][0]-
+                    myMatrix[1][0]*myMatrix[2][2]*myMatrix[3][1]-myMatrix[1][1]*myMatrix[2][0]*myMatrix[3][2]) ;
+
+            int secondMinor =(int)(myMatrix[0][0]*myMatrix[2][1]*myMatrix[3][2]+myMatrix[0][1]*myMatrix[2][2]*myMatrix[3][0]+
+                    myMatrix[0][2]*myMatrix[2][0]*myMatrix[3][1]-myMatrix[0][2]*myMatrix[2][1]*myMatrix[3][0]-
+                    myMatrix[0][0]*myMatrix[2][2]*myMatrix[3][1]-myMatrix[0][1]*myMatrix[2][0]*myMatrix[3][2]) ;
+
+            int thirdMinor =(int)(myMatrix[0][0]*myMatrix[1][1]*myMatrix[3][2]+myMatrix[0][1]*myMatrix[1][2]*myMatrix[3][0]+
+                    myMatrix[0][2]*myMatrix[1][0]*myMatrix[3][1]-myMatrix[0][2]*myMatrix[1][1]*myMatrix[3][0]-
+                    myMatrix[0][0]*myMatrix[1][2]*myMatrix[3][1]-myMatrix[0][1]*myMatrix[1][0]*myMatrix[3][2]) ;
+
+            int fourthMinor =(int) (myMatrix[0][0]*myMatrix[1][1]*myMatrix[2][2]+myMatrix[0][1]*myMatrix[1][2]*myMatrix[2][0]+
+                    myMatrix[0][2]*myMatrix[1][0]*myMatrix[2][1]-myMatrix[0][2]*myMatrix[1][1]*myMatrix[2][0]-
+                    myMatrix[0][0]*myMatrix[1][2]*myMatrix[2][1]-myMatrix[0][1]*myMatrix[1][0]*myMatrix[2][2]) ;
+
+            determinant = (int) (-myMatrix[0][3]*firstMinor+myMatrix[1][3]*secondMinor-myMatrix[2][3]*thirdMinor+
+                    myMatrix[3][3]*fourthMinor);
+        }
+        System.out.println("Determinant is " + determinant);
+
     }
 
 
